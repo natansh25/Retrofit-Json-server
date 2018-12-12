@@ -3,13 +3,16 @@ package infinity1087.android.com.retrofitpostexample;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
+import java.util.Arrays;
 import java.util.List;
 
 import infinity1087.android.com.retrofitpostexample.RetrofitService.ApiClient;
 import infinity1087.android.com.retrofitpostexample.RetrofitService.ApiInterface;
 import infinity1087.android.com.retrofitpostexample.model.Employe;
 import infinity1087.android.com.retrofitpostexample.model.EmployeResult;
+import infinity1087.android.com.retrofitpostexample.model.Example;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -26,12 +29,18 @@ public class MainActivity extends AppCompatActivity {
     private void callRetrofit() {
 
 
+
+    }
+
+    public void get(View view) {
+
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
 
-        Call<EmployeResult> call = apiInterface.getEmployees();
-        call.enqueue(new Callback<EmployeResult>() {
+        Call<List<Example>> call = apiInterface.getEmployees();
+        call.enqueue(new Callback<List<Example>>() {
             @Override
-            public void onResponse(Call<EmployeResult> call, Response<EmployeResult> response) {
+            public void onResponse(Call<List<Example>> call, Response<List<Example>> response) {
+
                 String url = String.valueOf(response.raw().request().url());
                 Log.d("xxx", url);
                 //List<EmployeResult> results = response.body().getEmployees();
@@ -40,10 +49,25 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<EmployeResult> call, Throwable t) {
+            public void onFailure(Call<List<Example>> call, Throwable t) {
                 Log.d("xxx", t.getMessage());
             }
         });
+
+    }
+
+    public void post(View view) {
+    }
+
+    public void put(View view) {
+    }
+
+    public void delet(View view) {
+
+
+
+
+
 
     }
 }
