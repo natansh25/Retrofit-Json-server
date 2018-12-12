@@ -80,6 +80,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void post(View view) {
+
+        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+        apiInterface.savePost("Alvato", "Plve", "giut@uic.xom").enqueue(new Callback<Example>() {
+            @Override
+            public void onResponse(Call<Example> call, Response<Example> response) {
+
+                if(response.isSuccessful()) {
+                   // showResponse(response.body().toString());
+                    Log.i("hhh", "post submitted to API." + response.body().toString());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Example> call, Throwable t) {
+                Log.e("hhh", "Unable to submit post to API." + t.getMessage());
+            }
+        });
     }
 
     public void put(View view) {
