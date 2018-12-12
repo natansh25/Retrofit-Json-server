@@ -34,7 +34,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void get(View view) {
 
-        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+        //------------------for get
+
+      /*  ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
 
         Call<List<Example>> call = apiInterface.getEmployees();
         call.enqueue(new Callback<List<Example>>() {
@@ -50,6 +52,27 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<Example>> call, Throwable t) {
+                Log.d("xxx", t.getMessage());
+            }
+        });*/
+
+   //----------------- get by id
+        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+
+        Call<Example> call = apiInterface.getEmployeesByID(3);
+        call.enqueue(new Callback<Example>() {
+            @Override
+            public void onResponse(Call<Example> call, Response<Example> response) {
+
+                String url = String.valueOf(response.raw().request().url());
+                Log.d("xxx", url);
+                //List<EmployeResult> results = response.body().getEmployees();
+
+
+            }
+
+            @Override
+            public void onFailure(Call<Example> call, Throwable t) {
                 Log.d("xxx", t.getMessage());
             }
         });

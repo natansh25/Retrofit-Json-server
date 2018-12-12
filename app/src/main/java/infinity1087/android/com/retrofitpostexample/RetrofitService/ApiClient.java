@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ApiClient {
 
 
-    // for running in emulator use 10.0.2.2:3000 not localhost 
+    // for running in emulator use 10.0.2.2:3000 not localhost
 
     public static String Base_URL = " http://10.0.2.2:3000";
 

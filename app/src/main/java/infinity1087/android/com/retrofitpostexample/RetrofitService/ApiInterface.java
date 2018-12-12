@@ -17,11 +17,13 @@ import retrofit2.http.Query;
 public interface ApiInterface {
 
 
-    @GET("employees")
+    // return an array list List<Example>
+    @GET("employees/4")
     Call<List<Example>> getEmployees();
 
+    // returns an object so <Example>
     @GET("employees/{user_id}")
-    Call<List<Example>> getEmployeesByID(@Path("user_id") int path);
+    Call<Example> getEmployeesByID(@Path("user_id") int path);
 
 
 }
